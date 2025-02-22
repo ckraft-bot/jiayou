@@ -46,9 +46,6 @@ def insert_message():
         # Clear the input box
         st.session_state.chat_input = ""
 
-        # Use rerun to update the UI and show the cleared input field
-        st.rerun()
-
 # Sidebar
 st.title("💬 Race Chats")
 st.write("Chat with others in real time!")
@@ -84,3 +81,6 @@ st.text_input("Type your message:", key="chat_input", on_change=insert_message)
 # Handle sending and resetting chat input
 if st.button("Send"):
     insert_message()
+
+# Dummy element to trigger UI update
+st.empty()
