@@ -1,6 +1,6 @@
 # jiayou
 
-CHeer me on in person or virutally asynchronously. 
+Cheer me on in person or virutally asynchronously. 
 
 
 🚀 Setting Up NeonDB for Streamlit Chat
