@@ -3,7 +3,6 @@ import streamlit as st
 import random
 from datetime import datetime
 import pytz  
-import os
 
 connection_str = st.secrets["postgres"]["connection_str"]
 
@@ -27,6 +26,25 @@ conn.commit()
 def load_messages():
     cursor.execute("SELECT username, text, timestamp FROM messages ORDER BY timestamp ASC")
     return cursor.fetchall()
+
+# Function to insert and clear input
+def insert_message():
+    if st.session_state.chat_input:
+        # Set timezone to Eastern Time
+        eastern_time_zone = pytz.timezone('US/Eastern')
+        # Get current time in Eastern Time
+        timestamp = datetime.now(eastern_time_zone).strftime("%I:%M %p")
+        
+        # Insert the new message into the database
+        cursor.execute("INSERT INTO messages (username, text, timestamp) VALUES (%s, %s, %s)", 
+                    (st.session_state.username, st.session_state.chat_input, timestamp))
+        conn.commit()
+        
+        # Clear the input box
+        st.session_state.chat_input = ""
+
+        # Use rerun to update the UI and show the cleared input field
+        st.rerun()
 
 # Sidebar
 st.title("💬 Race Chats")
@@ -57,14 +75,8 @@ for msg in messages:
     st.markdown(f"**{msg[0]}** ({msg[2]}): {msg[1]}")
 
 # Input field for new messages
-new_message = st.text_input("Type your message:", key="chat_input")
-if st.button("Send") and new_message:
-    # Set timezone to Eastern Time
-    eastern_time_zone = pytz.timezone('US/Eastern')
-    # Get current time in Eastern Time
-    timestamp = datetime.now(eastern_time_zone).strftime("%I:%M %p")
-    
-    cursor.execute("INSERT INTO messages (username, text, timestamp) VALUES (%s, %s, %s)", 
-                (st.session_state.username, new_message, timestamp))
-    conn.commit()
-    st.rerun()
+st.text_input("Type your message:", key="chat_input", on_change=insert_message)
+
+# Handle sending and resetting chat input
+if st.button("Send"):
+    insert_message()
