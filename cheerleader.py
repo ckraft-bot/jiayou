@@ -2,25 +2,29 @@ import psycopg2
 import streamlit as st
 import random
 from datetime import datetime
+import os
 
+connection_str = st.secrets["postgres"]["connection_str"]
 
+# Ensure username is initialized
+if "username" not in st.session_state:
+    st.session_state.username = f"User{random.randint(1000, 9999)}"
 
 # Connect to NeonDB PostgreSQL
-conn = psycopg2.connect(f"{st.secrets['neondb']}") # for deployment
-# conn = psycopg2.connect(connection_str) # for local testing
+conn = psycopg2.connect(connection_str)  
 cursor = conn.cursor()
 
 # Create table if it doesn't exist
 cursor.execute('''CREATE TABLE IF NOT EXISTS messages (
                     id SERIAL PRIMARY KEY,
-                    user TEXT,
+                    username TEXT,
                     text TEXT,
                     timestamp TEXT)''')
 conn.commit()
 
 # Function to load messages
 def load_messages():
-    cursor.execute("SELECT user, text, timestamp FROM messages ORDER BY timestamp ASC")
+    cursor.execute("SELECT username, text, timestamp FROM messages ORDER BY timestamp ASC")
     return cursor.fetchall()
 
 # Sidebar
@@ -40,7 +44,7 @@ for msg in messages:
 new_message = st.text_input("Type your message:", key="chat_input")
 if st.button("Send") and new_message:
     timestamp = datetime.now().strftime("%I:%M %p")
-    cursor.execute("INSERT INTO messages (user, text, timestamp) VALUES (%s, %s, %s)", 
+    cursor.execute("INSERT INTO messages (username, text, timestamp) VALUES (%s, %s, %s)", 
                 (st.session_state.username, new_message, timestamp))
     conn.commit()
     st.rerun()
