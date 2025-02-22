@@ -3,8 +3,11 @@ import streamlit as st
 import random
 from datetime import datetime
 
+
+
 # Connect to NeonDB PostgreSQL
-conn = psycopg2.connect("postgresql://your-username:your-password@your-db-host.com/dbname")
+conn = psycopg2.connect(f"{st.secrets['neondb']}") # for deployment
+# conn = psycopg2.connect(connection_str) # for local testing
 cursor = conn.cursor()
 
 # Create table if it doesn't exist
