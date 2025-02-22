@@ -2,6 +2,7 @@ import psycopg2
 import streamlit as st
 import random
 from datetime import datetime
+import pytz  
 import os
 
 connection_str = st.secrets["postgres"]["connection_str"]
@@ -58,7 +59,11 @@ for msg in messages:
 # Input field for new messages
 new_message = st.text_input("Type your message:", key="chat_input")
 if st.button("Send") and new_message:
-    timestamp = datetime.now().strftime("%I:%M %p")
+    # Set timezone to Eastern Time
+    eastern_time_zone = pytz.timezone('US/Eastern')
+    # Get current time in Eastern Time
+    timestamp = datetime.now(eastern_time_zone).strftime("%I:%M %p")
+    
     cursor.execute("INSERT INTO messages (username, text, timestamp) VALUES (%s, %s, %s)", 
                 (st.session_state.username, new_message, timestamp))
     conn.commit()
