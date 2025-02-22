@@ -34,16 +34,18 @@ st.write("Chat with others in real time!")
 # Sidebar content
 st.sidebar.title("Erlanger Chattanooga Marathon")
 st.sidebar.markdown("""## Logistics
-- **Date:** March 5, 2022
+- **Date:** March 2, 2025
 - **Location:** Chattanooga, TN
 - **Start Time:** 7:30 AM
 - **Start Location:** First Horizon Pavilion, [1826 Reggie White Blvd, Chattanooga, TN 37408](https://maps.app.goo.gl/irLBHxsJaJ2bh9Dp8)
 - **Distance:** 13.1 miles
+
 ## Quick Links
 - The main [page](https://www.chattanoogamarathon.com/)
 - The [schedule](https://www.chattanoogamarathon.com/race/schedule)
 - The parking/traffic [info](https://www.chattanoogamarathon.com/race/traffic)
 - The half marathon [course map](https://www.chattanoogamarathon.com/assets/pdf/2024-ChattMarathon-Maps.pdf)
+- _coming soon_ Runner GPS [tracker]()
 """)
 
 # Load messages
