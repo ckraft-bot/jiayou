@@ -5,7 +5,7 @@ This guide will help you set up a **free cloud PostgreSQL database** using [Neon
 
 ## **1️⃣ Create a Free NeonDB Account**
 1. Go to [Neon.tech](https://neon.tech/).
-2. Sign up for a **free account** - singed with github creds.
+2. Sign up for a **free account** - signed in with github creds.
 3. Click **Create a New Project**.
 4. Choose **PostgreSQL** and name your database.
 5. Copy the **Database Connection URL**, which will look like this:
