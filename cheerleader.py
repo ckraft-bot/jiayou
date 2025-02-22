@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 import psycopg2
 import streamlit as st
 import random
