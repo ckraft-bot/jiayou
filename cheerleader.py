@@ -4,7 +4,8 @@ import random
 from datetime import datetime
 import pytz  
 
-connection_str = st.secrets["postgres"]["connection_str"]
+# connection_str = st.secrets["postgres"]["connection_str"]
+connection_str = "postgresql://neondb_owner:npg_Ilg2G7Vdsntr@ep-dry-breeze-a85tfkd4-pooler.eastus2.azure.neon.tech/erlanger_half_chat?sslmode=require"
 
 # Ensure username is initialized
 if "username" not in st.session_state:
@@ -49,6 +50,7 @@ def insert_message():
 # Sidebar
 st.title("💬 Race Chats")
 st.write("Chat with others in real time!")
+st.info("[Click here to watch the app tutorial :tv:](https://youtu.be/VOCMwRqKgCg?si=dBO3vYMZo4BfDnd7)")
 
 # Sidebar content
 st.sidebar.title("Erlanger Chattanooga Marathon")
