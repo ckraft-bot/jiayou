@@ -4,8 +4,7 @@ import random
 from datetime import datetime
 import pytz  
 
-# connection_str = st.secrets["postgres"]["connection_str"]
-connection_str = "postgresql://neondb_owner:npg_Ilg2G7Vdsntr@ep-dry-breeze-a85tfkd4-pooler.eastus2.azure.neon.tech/erlanger_half_chat?sslmode=require"
+connection_str = st.secrets["postgres"]["connection_str"]
 
 # Ensure username is initialized
 if "username" not in st.session_state:
