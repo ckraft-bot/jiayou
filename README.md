@@ -7,5 +7,5 @@ Users are likely to be dispersed, and currently, communication via SMS isn’t s
 On the side panel there are logistical info
 ![logistical info](Media/logistics.png)
 
-Here's an example of anonymous and asynchronous 
+Here's an example of anonymous and asynchronous communication
 ![Anonymous and Asynchronous Example](Media/async_comm.png)
