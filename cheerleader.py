@@ -52,7 +52,7 @@ def insert_message():
 # Sidebar
 st.title("💬 Race Chats")
 st.write("Chat with others in real time!")
-st.info("[Click here to watch the app tutorial :tv:](https://youtu.be/VOCMwRqKgCg?si=dBO3vYMZo4BfDnd7)")
+st.info("[Click here to watch the app tutorial :tv:](https://youtu.be/Q19EldyePaY?si=ePmvQFHZLWLfJemJ)")
 
 # Sidebar content
 st.sidebar.title("Erlanger Chattanooga Marathon")
