@@ -67,7 +67,7 @@ st.sidebar.markdown("""## Logistics
 - The main [page](https://www.chattanoogamarathon.com/)
 - The [schedule](https://www.chattanoogamarathon.com/race/schedule)
 - The parking/traffic [info](https://www.chattanoogamarathon.com/race/traffic)
-- The half marathon [course map](https://www.chattanoogamarathon.com/assets/pdf/2024-ChattMarathon-Maps.pdf)
+- The half marathon [course map](https://www.chattanoogamarathon.com/assets/pdf/2019-ChattMarathon-Maps-Certification_halfmarathon.pdf)
 - _coming soon_ Runner GPS [tracker]()
 """)
 
